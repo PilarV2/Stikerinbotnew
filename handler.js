@@ -1,3 +1,7 @@
+//thanskto nurutomo, ariffb, bochilGaming, adi official dll
+//jan di ubah 
+//recode by : The.sad.boy01
+
 let util = require('util')
 let fetch = require('node-fetch')
 let simple = require('./lib/simple')
@@ -350,6 +354,7 @@ module.exports = {
           if (!'anon' in settings) settings.anon = true
           if (!'anticall' in settings) settings.anticall = true
           if (!'antispam' in settings) settings.antispam = true
+          if (!'antitroli' in settings) settings.antitroli = true
           if (!'backup' in settings) settings.backup = false
           if (!isNumber(settings.backupDB)) settings.backupDB = 0
           if (!'groupOnly' in settings) settings.groupOnly = false
@@ -360,6 +365,7 @@ module.exports = {
           anon: true,
           anticall: true,
           antispam: true,
+          antitroli: true,
           backup: false,
           backupDB: 0,
           groupOnly: false,
