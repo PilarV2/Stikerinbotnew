@@ -1,5 +1,7 @@
 let fs = require('fs')
-global.linkGC = ['https://chat.whatsapp.com/Lb4Emjih98rBiCZiZoS2eM', 'https://chat.whatsapp.com/CnQV9lNcHuIENb8SQ9CaYP'] //Letakkan link group mu
+global.DeveloperMode = 'false' //true Or false
+global.linkGC = ['https://chat.whatsapp.com/Lb4Emjih98rBiCZiZoS2eM', 'https://chat.whatsapp.com/CnQV9lNcHuIENb8SQ9CaYP']
+//kalo mau ubah nama owner nya ubah di ../plugins/creator.js
 global.owner = ['62895336282144', '6281319944687', '6283143393763', '6288217277973', '6281334177340', '6283128734012', '6289504585790', '16102156479', '6285157489446'] // Letakan nomor kamu disini
 global.mods = ['62895336282144', '6281319944687', '6287878505740', '6283128734012'] // Moderator?
 global.prems = JSON.parse(fs.readFileSync('./src/premium.json')) // Pengguna premium tidak memerlukan limit
@@ -39,14 +41,32 @@ global.APIKeys = { // APIKey nya disini
   'https://api.zeks.xyz': 'apivinz',
   'https://api.lolhuman.xyz': 'APIKEYLU',
   'https://leyscoders-api.herokuapp.com': 'DestaPrasApi',
-  'https://melcanz.com': 'APIKEYLU',
+  'https://melcanz.com': 'amel',
   'https://dhnjing.xyz': 'LitRHap',
 }
+//sosmed owner
+global.yt = 'https://youtube.com/channel/UCVv3wC5Q7_juw-d9HepjpOQ' //UBAH JADI LINK YT LU
+global.ig = `https://instagram.com/the.sad.boy01` //UBAH JADI LINK IG LU
+
+//donasi
+global.donate = `
+╭─「  Donasi • Pulsa 」
+├❒ tre [+62 895-3362-82144]
+╰────
+
+╭─「  Donasi • Non Pulsa 」
+├❒ Gopay [0895336282144]
+├❒ saweria [https://saweria.co/thesadboy01]
+╰────
+╭─「  Hubungi 」
+├❒ Ingin donasi? Wa.me/62895336282144
+╰────` //UBAH JADI NOMER DAN LINK SAWERIA MU
 
 // Sticker WM
 global.packname = 'Stikerinbotnew'
 global.author = 'recode by : The.Sad.Boy01'
 global.wm = '© Stikerinbotnew' //UBAH JADI NAMAMU
+global.botwm = '© Stikerinbotnew' //UBAH JADI NAMAMU
 
 global.wait = '_*tunggu sedang di proses...*_'
 global.eror = '_*Server Error*_'
