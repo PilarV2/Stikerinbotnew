@@ -14,10 +14,10 @@ handler.all = async function (m, { isBlocked }) {
     try {
         if (m.mentionedJid.includes(this.user.jid) && m.isGroup) {
             await this.send2Button(m.chat,
-                isBanned ? 'whatsapp bot tidak aktif' : banned ? 'kamu dibanned' : 'whatsapp bot disini',
+                isBanned ? 'Stikerinbotnew tidak aktif' : banned ? 'kamu dibanned' : 'Stikerinbotnew bot disini',
                 wm,
                 isBanned ? 'Unban' : banned ? 'Pemilik Bot' : 'Menu',
-                isBanned ? '.unban' : banned ? '.owner' : '.?',
+                isBanned ? '.unban' : banned ? '.owner' : '.menu',
                 m.isGroup ? 'Ban' : isBanned ? 'Unban' : 'Donasi',
                 m.isGroup ? '.ban' : isBanned ? '.unban' : '.donasi', m)
         }
@@ -29,10 +29,11 @@ handler.all = async function (m, { isBlocked }) {
     if ((m.mtype === 'groupInviteMessage' || m.text.startsWith('https://chat') || m.text.startsWith('Buka tautan ini')) && !m.isBaileys && !m.isGroup) {
         this.sendButton(m.chat, `┌〔 Undang Bot ke Grup 〕
 ├ 7 Hari / Rp 5,000
-├ 30 Hari / Rp 10,000
+├ 14 Hari / Rp 10,000
+├ 30 Hari / Rp 15,000
 └────
 
-https://github.com/Kangsad01/wabot
+https://github.com/Kangsad01/Stikerinbotnew
 `.trim(), wm, 'Pemilik Bot', ',owner', m)
     }
 
@@ -64,7 +65,7 @@ https://github.com/Kangsad01/wabot
         let _uptime = process.uptime() * 1000
         let uptime = clockString(_uptime)
         totaluser = Object.keys(db.data.users)
-        await this.setStatus(`Aktif selama ${uptime} │ Mode: ${global.opts['self'] ? 'Private' : setting.groupOnly ? 'Hanya Grup' : 'Publik'} │ total user : ${totaluser.length} │ Whatsapp bot`).catch(_ => _)
+        await this.setStatus(`Aktif selama ${uptime} │ Mode: ${global.opts['self'] ? 'Private' : setting.groupOnly ? 'Hanya Grup' : 'Publik'} │ total user : ${totaluser.length} │ Stikerinbot new`).catch(_ => _)
         setting.status = new Date() * 1
     }
 
