@@ -26,8 +26,8 @@ let handler = async m => m.reply(`
 
 ◪ *Jika Minat Hubungi owner kami*
 ◪ *Atau Masuk Group Official Bot*
-_https://bit.ly/3csRXrc_
-
+❒*${conn.getName(conn.user.jid)}* :
+${(global.linkGC).map((v, i) => '❒ *Group ' + (i + 1) + '*\n' + v).join`\n❒\n`}
 Ingin Jadi Bot Seperti ini?
 ketik #jadibot
 `.trim())
