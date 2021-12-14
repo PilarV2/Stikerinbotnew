@@ -1,18 +1,28 @@
 <p align="center">
 	<img src="https://i.ibb.co/jr9Nh6Q/Thumb.jpg" width="35%" style="margin-left: auto;margin-right: auto;display: block;">
 </p>
-<h1 align="center">stikerinbot</h1>
+<h1 align="center">Stikerinbotnew</h1>
 
+## Recode BY : [`The.sad.boy01`](https://github.com/Kangsad01)
+
+
+## FOR DEPLOY HEROKU USER
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Kangsad01/Stikerinbotnew)
 
+## FOR DEPLOY RAILWAY USER
+
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FKangsad01%2FStikerinbotnew)
+
+## FOR DEPLOY REPLIT USER
 
 [![Run on Repl.it](https://repl.it/badge/github/FadliDarmawan/haruno)](https://repl.it/github/Kangsad01/Stikerinbotnew)
 
+## GRUP WHATSAPP
+
 [![Grup WhatsApp](https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/GVwpKf83s42D1CnIfDW19G)
 
-### `--INFO!!`
+## INFO!!
 
 Sebelum nya hapus dulu file session.data.json biar muncul qr codenya
 
@@ -38,6 +48,8 @@ node .
 ```bash
 git clone https://github.com/Kangsad01/Stikerinbotnew --branch termux
 cd Stikerinbotnew
+npm install -g npm@6.14.14
+npm i @adiwajshing/baileys@latest
 npm i
 npm update
 node .
