@@ -51,7 +51,7 @@ function button(teks, user) {
     
     const buttonMessage = {
         contentText: teks,
-        footerText: '©games-wabot',
+        footerText: wm,
         buttons: buttons,
         headerType: 1
     }
