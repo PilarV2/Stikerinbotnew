@@ -1,6 +1,7 @@
 // By Caliph & Akbar
 let fetch = require('node-fetch')
 let fs = require('fs')
+let igo = global.ig
 function clockString(ms) {
   let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
   let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
@@ -24,7 +25,7 @@ let handler  = async (m, { conn }) => {
 ❏ *Browser* : ${conn.browserDescription[1]}
 ❏ *Uptime Bot* : ${clockString(process.uptime() * 1000)}
 ❏ *Host Number* : @${global.conn.user.jid.split('@')[0]}
-❏ *Bio Bot* : ${ppstatus.status}\n\n*Support/Follow Me*\nhttps://instagram.com/the.sad.boy01 `, quoted: m, sendEphemeral: true, thumbnail: fs.readFileSync('./src/logo.jpg'), contextInfo: { mentionedJid: [global.conn.user.jid]}})
+❏ *Bio Bot* : ${ppstatus.status}\n\n*Support/Follow Me*\n${igo}`, quoted: m, sendEphemeral: true, thumbnail: fs.readFileSync('./src/logo.jpg'), contextInfo: { mentionedJid: [global.conn.user.jid]}})
 }
 handler.help = ['info', 'alive']
 handler.tags = ['main']
