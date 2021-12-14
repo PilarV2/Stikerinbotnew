@@ -41,7 +41,7 @@ global.APIKeys = { // APIKey nya disini
   'https://api.zeks.xyz': 'apivinz',
   'https://api.lolhuman.xyz': 'APIKEYLU',
   'https://leyscoders-api.herokuapp.com': 'DestaPrasApi',
-  'https://melcanz.com': 'amel',
+  'https://melcanz.com': 'beli bang',
   'https://dhnjing.xyz': 'LitRHap',
 }
 //sosmed owner
