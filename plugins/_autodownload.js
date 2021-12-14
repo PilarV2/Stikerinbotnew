@@ -19,7 +19,7 @@ handler.all = async function (m, { isPrems }) {
         let json = await res.json()
         // m.reply(util.format(json))
         await m.reply('*Downloading Video From Tiktok*')
-        await conn.sendFile(m.chat, json.result.data.videoSD, 'tiktok.mp4', wm, m)
+        await conn.sendFile(m.chat, json.videoSD, 'tiktok.mp4', wm, m)
     }
 
     if (/^.*cocofun/i.test(m.text)) {
