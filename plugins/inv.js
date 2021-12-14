@@ -76,7 +76,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let userslegendary = sortedlegendary.map(v => v[0])
     let str = `📥Inventory *${name.vnmae || name.notify || name.name || ('+' + name.jid.split`@`[0])}*\n
 ♥️Health: *${healt}*
-🔰 Role: *${role}*
+🔰Role: *${role}*
 🍸Stamina: *${stamina}*
 🥋Armor: *${armor == 0 ? 'Tidak Punya' : '' || armor == 1 ? 'Leather Armor' : '' || armor == 2 ? 'Iron Armor' : '' || armor == 3 ? 'Gold Armor' : '' || armor == 4 ? 'Diamond Armor' : '' || armor == 5 ? 'Netherite Armor' : ''}*
 ⚔️Pedang: ${sword == 0 ? 'Tidak punya' : '' || sword == 1 ? 'wood sword' : '' || sword == 2 ? 'Iron sword' : '' || sword == 3 ? 'Gold sword' : '' || sword == 4 ? 'Diamond sword' : '' || sword > 0 && sword < 5 ? `Ketahanan (*${_sword}* / *${sword *100}*)` : '' || sword == 5 ? '*Netherite Sword*' : ''}
@@ -89,7 +89,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 🎟️Limit: ${limit}
 
 *🏹hewan dikandang:*
-🐔 ayam: ${ayam}
+🐔ayam: ${ayam}
 🐄Sapi: ${sapi}
 🐖Babi: ${babi}
 🐂Banteng: ${banteng}
@@ -113,7 +113,7 @@ ${nila + bawal + ikan + lele + psepick + psenjata }
 🕸️String: ${string}
 🪙Gold: ${emas}
 ⛓️Besi: ${besi}
-🍎 apel : ${apel}
+🍎apel : ${apel}
 🍗ayam bakar: ${ayamb}
 🍖ayam goreng: ${ayamg}
 🍖Rendang Sapi : ${sapir}
@@ -174,7 +174,7 @@ Last Monthly: ${lastmonthly > 0 ? '❌' + new Date(lastmonthly) : '✅'}
 ⚠️Warn: *${warn}*
 ❎Banned: *No*
 `.trim()
-    conn.send2Button(m.chat, str, `©wabot`, `Profile`, `.profile`, `Kembali`, `.menu`, m)
+    conn.send2Button(m.chat, str, wm, `Profile`, `.profile`, `Kembali`, `.menu`, m)
 }
 handler.help = ['inventory', 'inv']
 handler.tags = ['rpg']
