@@ -38,7 +38,7 @@ let handler  = async (m, { conn, usedPrefix }) => {
 │   *_Jangan judi, Karena gk bakal_*
 │   *_balik modal.BENERAN GK BOHONG_*
 │  
-│*©${conn.getName(conn.user.jid)} 2021-2022*
+│*© Stikerinbotnew 2021-2022*
 ╰─「 *Tutorial Main ${conn.getName(conn.user.jid)}* 」
 `.trim(), m)
 }
