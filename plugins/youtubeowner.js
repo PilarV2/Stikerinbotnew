@@ -1,7 +1,8 @@
+let yto = global.yt
 let handler  = async (m, { conn, usedPrefix: _p }) => {
 let info = `SC VIA Github
 Ini Chanel Youtube Onwer :
-https://youtube.com/channel/UCVv3wC5Q7_juw-d9HepjpOQ
+${yto}
 `.trim()
 
 conn.fakeReply(m.chat, info, '0@s.whatsapp.net', '*YANG SUBSCRIBE DPT PAHALA*', 'status@broadcast') 
