@@ -27,6 +27,7 @@ global.APIs = { // API Prefix
   dzx: 'https://api.dhamzxploit.my.id',
   LeysCoder: 'https://leyscoders-api.herokuapp.com',
   amel: 'https://melcanz.com',
+  amell: 'https://melcanz.net',
   Dehan: 'https://dhnjing.xyz',
 }
 global.APIKeys = { // APIKey nya disini
@@ -42,6 +43,7 @@ global.APIKeys = { // APIKey nya disini
   'https://api.lolhuman.xyz': 'APIKEYLU',
   'https://leyscoders-api.herokuapp.com': 'DestaPrasApi',
   'https://melcanz.com': 'beli bang',
+  'https://melcanz.net': 'gratisan',
   'https://dhnjing.xyz': 'LitRHap',
 }
 //sosmed owner
