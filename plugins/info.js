@@ -21,8 +21,7 @@ let handler  = async (m, { conn, usedPrefix }) => {
 ╠➥ *Uptime:* ${uptime}
 ║
 ╠═〘 DONASI💸 〙 ═
-╠➥ three: 0895336282144
-╠➥ saweria: https://saweria.co/thesadboy01
+╠➥ Ingin donasi ??, Ketik : ${usedPrefix}donasi
 ║
 ╠═ Request? ${package.bugs.url}
 ╠═ officiall Group *${conn.getName(conn.user.jid)}* :
