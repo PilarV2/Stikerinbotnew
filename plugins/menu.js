@@ -35,15 +35,18 @@ ${'```%npmdesc```'}
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   let tags
   let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'rpg', 'game', 'xp', 'stiker', 'kerangajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'tanpakategori', 'owner']
+  let arrayMenu = ['all', 'rpg', 'game', 'jadian', 'xp', 'stiker', 'kerangajaib', 'photo', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'tanpakategori', 'owner']
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all') tags = {
     'main': 'Utama',
     'game': 'Game',
     'rpg': 'Rpg',
+    'jadian': 'Jadian',
     'xp': 'Exp & Limit',
     'sticker': 'Stiker',
     'kerang': 'Kerang Ajaib',
+    'ephoto': 'Ephoto',
+    'phooxy': 'Photooxy',
     'quotes': 'Quotes',
     'admin': `Admin ${global.opts['restrict'] ? '' : '(Dinonaktifkan)'}`,
     'group': 'Grup',
@@ -69,6 +72,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'rpg') tags = {
     'rpg': 'Rpg'
   }
+  if (teks == 'jadian') tags = {
+    'jadian': 'Jadian'
+  }
   if (teks == 'xp') tags = {
     'xp': 'Exp & Limit'
   }
@@ -77,6 +83,10 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   }
   if (teks == 'kerangajaib') tags = {
     'kerang': 'Kerang Ajaib'
+  }
+  if (teks == 'photo') tags = {
+    'ephoto': 'Ephoto',
+    'photooxy': 'Photooxy'
   }
   if (teks == 'quotes') tags = {
     'quotes': 'Quotes'
@@ -196,9 +206,11 @@ ${readMore}
 ├• ${_p + command} all
 ├• ${_p + command} game
 ├• ${_p + command} rpg
+├• ${_p + command} jadian
 ├• ${_p + command} xp
 ├• ${_p + command} stiker
 ├• ${_p + command} kerangajaib
+├• ${_p + command} photo
 ├• ${_p + command} quotes
 ├• ${_p + command} admin
 ├• ${_p + command} grup
@@ -269,7 +281,7 @@ ${readMore}
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    await conn.send3ButtonLoc(m.chat, await (await fetch(fla + teks)).buffer(), text.trim(), 'Whatsapp bot', 'Pemilik Bot', `${_p}owner`, 'Donasi', `${_p}donasi`, `Rules`, `${_p}rules`, m)
+    await conn.send3ButtonLoc(m.chat, await (await fetch(fla + teks)).buffer(), text.trim(), wm, 'Pemilik Bot', `${_p}owner`, 'Donasi', `${_p}donasi`, `Rules`, `${_p}rules`, m)
   } catch (e) {
     //conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
