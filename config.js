@@ -60,9 +60,28 @@ global.donate = `
 ├❒ Gopay [0895336282144]
 ├❒ saweria [https://saweria.co/thesadboy01]
 ╰────
+
 ╭─「  Hubungi 」
 ├❒ Ingin donasi? Wa.me/62895336282144
 ╰────` //UBAH JADI NOMER DAN LINK SAWERIA MU
+
+//Rules bot
+global.rules = `
+╭─ *「 RULES BOT」*
+│
+├❒ DILARANG CHAT PRIBADI KE BOT
+├❒ DILARANG TOXIC
+├❒ DILARANG SPAM COMMAND BOT
+├❒ DILARANG KIRIM VIRTEX
+├❒ DILARANG KIRIM 18+ APAPUN ITU
+├❒ DILARANG TELPON / VC KEBOT
+├❒ DILARANG CULIK BOT KE GRUP
+├❒ DILARANG PROMOSI KE BOT
+├❒ BOT TIDAK MENERIMA SAVE KONTAK
+│
+├❏ KALO MELANGGAR AKAN LANGSUNG DIBAN DAN DI BLOKIR TANPA TOLERANSI SEDIKIT PUN
+│
+└─ *「 RULES BOT」*` //Ubah jadi semau mu
 
 // Sticker WM
 global.packname = 'Stikerinbotnew'
