@@ -14,7 +14,8 @@ let handler  = async (m, { conn, usedPrefix }) => {
 ╠➥ *Versi:* ${package.version}
 ╠➥ *HomePage:* ${(package.homepage ? package.homepage.url || package.homepage : '[unknown github url]')}
 ╠➥ *Issue:* ${package.bugs.url}
-╠➥ *Prefix:* ' ${usedPrefix} '
+╠➥ *Global Prefix:* 
+║  '${global.prefix}'
 ╠➥ *Menu:* ${usedPrefix}menu
 ╠➥ *Ping:* ${neww - old} *ms*
 ╠➥ *Total user:* ${totalreg} *user*
@@ -45,9 +46,9 @@ ${(global.linkGC).map((v, i) => '║ *Group ' + (i + 1) + '*\n║' + v).join`\n�
 ╚═〘 *${conn.getName(conn.user.jid)}* 〙 ═
 `.trim(), m)
 }
-handler.help = ['info']
+handler.help = ['infobot']
 handler.tags = ['about']
-handler.command = /^(bot|info)$/i
+handler.command = /^(botinfo|infobot)$/i
 
 handler.fail = null
 
