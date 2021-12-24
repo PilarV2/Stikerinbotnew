@@ -22,10 +22,6 @@
 
 [![Grup WhatsApp](https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/GVwpKf83s42D1CnIfDW19G)
 
-## INFO!!
-
-Sebelum nya hapus dulu file session.data.json biar muncul qr codenya
-
 
 ## UNTUK PENGGUNA WINDOWS/VPS/RDP
 
