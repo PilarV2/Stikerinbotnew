@@ -2,7 +2,7 @@ let fs = require('fs')
 global.DeveloperMode = 'false' //true Or false
 global.linkGC = ['']
 //kalo mau ubah nama owner nya ubah di ../plugins/creator.js
-global.owner = ['6289625556161'] //Letakan nomor kamu disini
+global.owner = ['6281376900646','6289625556161'] //Letakan nomor kamu disini
 global.mods = [''] // Moderator?
 global.prems = JSON.parse(fs.readFileSync('./src/premium.json')) // Pengguna premium tidak memerlukan limit
 global.APIs = { // API Prefix
@@ -85,8 +85,8 @@ global.rules = `
 
 // Sticker WM
 global.packname = 'CacaSepongPilar'
-global.author = 'Pilar'
-global.wm = '© Recode By Pilar' //UBAH JADI NAMAMU
+global.author = 'ZeilBotz'
+global.wm = '© ZeilBotz' //UBAH JADI NAMAMU
 global.botwm = '© Bot Wangsaf' //UBAH JADI NAMAMU
 
 global.wait = '_*tunggu sedang di proses...*_'
