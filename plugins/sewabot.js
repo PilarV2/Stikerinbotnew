@@ -2,9 +2,9 @@ let handler = async m => m.reply(`
 *「 LIST HARGA SEWA BOT 」*
 
 ❒ Sewa = _5k/grup (1 minggu)_
-❒ Sewa = _10k/grup (2 minggu)_
-❒ Sewa = _15k/grup (1 bulan)_
-❒ Free = _30 menit Bot Masuk Ke Group Kalian Setelah Itu Bot Akan Keluar_
+❒ Sewa = _10k/grup (1 bulan)_
+❒ Sewa = _20k/grup (permanen)_
+❒ Free = _1 hari menit Bot Masuk Ke Group Kalian Setelah Itu Bot Akan Keluar_
 
 ◪ *PEMBAYARAN BISA MELALUI*
 
@@ -25,8 +25,6 @@ let handler = async m => m.reply(`
 ❒ *Bisa Memasukkan Bot Ke dalam Grup*
 
 ◪ *Jika Minat Hubungi owner kami*
-◪ *Atau Masuk Group Official Bot*
-${(global.linkGC).map((v, i) => '❒ *Group ' + (i + 1) + '*\n❒' + v).join`\n \n`}
 Ingin Jadi Bot Seperti ini?
 ketik #jadibot
 `.trim())
