@@ -48,7 +48,7 @@ global.APIKeys = { // APIKey nya disini
 }
 //sosmed owner
 global.yt = 'https://youtube.com/channel/UCVv3wC5Q7_juw-d9HepjpOQ' //UBAH JADI LINK YT LU
-global.ig = `https://instagram.com/the.sad.boy01` //UBAH JADI LINK IG LU
+global.ig = `https://instagram.com/not_pilar` //UBAH JADI LINK IG LU
 
 //donasi
 global.donate = `
