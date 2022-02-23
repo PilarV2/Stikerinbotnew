@@ -6,143 +6,160 @@ let fetch = require('node-fetch')
 let moment = require('moment-timezone')
 const defaultMenu = {
   before: `
-┌─〔 %me 〕─•
-├• Hai, %name!
-│
-├❏ Tersisa *%limit Limit*
-├❏ Role *%role*
-├❏ Level *%level (%exp / %maxexp)* [%xp4levelup]
-├• %totalexp XP secara Total
-│
-├❏ Tanggal: *%week %weton, %date*
-├❏ Tanggal Islam: *%dateIslamic*
-├❏ Waktu: *%time*
-│
-├❏ Uptime: *%uptime (%muptime)*
-├❏ Database: %rtotalreg dari %totalreg
-└────•
-%readmore`.trimStart(),
-  header: '┌─〔 %category 〕─•',
-  body: '├❏ %cmd %islimit %isPremium',
-  footer: '└────•\n',
+╭〔 ZeusBotz 〕
+├ Hai, *%name!*
+├ Limit: *%limit*
+├ Role: *%role*
+├ Xp: *%exp / %maxexp*
+├ Total Xp: *%totalexp*
+╰───
+╭━━•›ꪶ ཻུ۪۪ꦽꦼ̷⸙ ━ ━ ━ ━ ꪶ ཻུ۪۪ꦽꦼ̷⸙‹•━━╮
+├ Mode: *${global.opts['self'] ? 'Private' : 'Publik'}*
+├ Runtime: *%uptime (%muptime)*
+├ Database: *%rtotalreg dari %totalreg*
+├ Memory Used : *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*
+└─────────────────
+  header: `
+⁙╭━━•›ꪶ ཻུ۪۪ꦽꦼ̷⸙ ━ ━ ━ ━ ꪶ ཻུ۪۪ꦽꦼ̷⸙‹•━━╮
+⁙┃╭┈─────────────⩵꙰ཱི࿐
+⁙┃╰─── %category ───➤ ↶↷*
+⁙├☆─〔 ZeusBotz 〕──➤`,
+  body: `⁙├〲 %cmd %islimit %isPremium`,
+  footer: '⁙╰•☆°°°🕊°°°🕊°°°🕊°°°‹•━━╮',
   after: `
 *%npmname@^%version*
 ${'```%npmdesc```'}
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
-let totaljadibot = [...new Set([...global.conns.filter(conn => conn.user && conn.state !== 'close').map(conn => conn.user)])]
   let tags
   let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'rpg', 'game', 'jadian', 'xp', 'stiker', 'kerangajaib', 'photo', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'tanpakategori', 'owner']
+  let arrayMenu = ['all', 'game', 'rpg', 'jadian', 'xp', 'stiker', 'kerangajaib', 'quotes', 'photo', 'editor', 'maker', 'textprome', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'dewasa', 'tanpakategori', 'owner']
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all') tags = {
-    'main': 'Utama',
-    'game': 'Game',
-    'rpg': 'Rpg',
-    'jadian': 'Jadian',
-    'xp': 'Exp & Limit',
-    'sticker': 'Stiker',
-    'kerang': 'Kerang Ajaib',
-    'ep': 'Ephoto',
-    'ph': 'Photooxy',
-    'quotes': 'Quotes',
-    'admin': `Admin ${global.opts['restrict'] ? '' : '(Dinonaktifkan)'}`,
-    'group': 'Grup',
-    'premium': 'Premium',
-    'internet': 'Internet',
-    'anonymous': 'Anonymous Chat',
-    'nulis': 'MagerNulis & Logo',
-    'downloader': 'Downloader',
-    'tools': 'Tools',
-    'fun': 'Fun',
-    'database': 'Database',
-    'vote': 'Voting',
-    'absen': 'Absen',
-    'quran': 'Al Qur\'an',
-    'audio': 'Pengubah Suara',
-    'jadibot': 'Jadi Bot',
-    'info': 'Info',
-    '': 'Tanpa Kategori',
+    'main': '𝗨𝘁𝗮𝗺𝗮',
+    'game': '𝗚𝗮𝗺𝗲',
+    'rpg': '𝗥𝗽𝗴',
+    'jadian': '𝗝𝗮𝗱𝗶𝗮𝗻',
+    'xp': '𝗘𝘅𝗽 & 𝗟𝗶𝗺𝗶𝘁',
+    'sticker': '𝗦𝘁𝗶𝗸𝗲𝗿',
+    'kerang': '𝗞𝗲𝗿𝗮𝗻𝗴 𝗔𝗷𝗮𝗶𝗯',
+    'quotes': '𝗤𝘂𝗼𝘁𝗲𝘀',
+    'ph': '𝗣𝗵𝗼𝘁𝗼𝗼𝘅𝘆',
+    'ep': '𝗘𝗽𝗵𝗼𝘁𝗼',
+    'editor': '𝗘𝗱𝗶𝘁𝗼𝗿',
+    'maker': '𝗠𝗮𝗸𝗲𝗿',
+    'te': '𝗧𝗲𝘅𝘁 𝗣𝗿𝗼 𝗠𝗲',
+    'admin': `𝗔𝗱𝗺𝗶𝗻 ${global.opts['restrict'] ? '' : '(Dinonaktifkan)'}`,
+    'group': '𝗚𝗿𝘂𝗽',
+    'premium': '𝗣𝗿𝗲𝗺𝗶𝘂𝗺',
+    'internet': '𝗜𝗻𝘁𝗲𝗿𝗻𝗲𝘁',
+    'anonymous': '𝗔𝗻𝗼𝗻𝘆𝗺𝗼𝘂𝘀 𝗖𝗵𝗮𝘁',
+    'nulis': '𝗠𝗮𝗴𝗲𝗿 𝗡𝘂𝗹𝗶𝘀 & 𝗟𝗼𝗴𝗼',
+    'downloader': '𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱𝗲𝗿',
+    'tools': '𝗧𝗼𝗼𝗹𝘀',
+    'fun': '𝗙𝘂𝗻',
+    'database': '𝗗𝗮𝘁𝗮𝗯𝗮𝘀𝗲',
+    'about': '𝗔𝗯𝗼𝘂𝘁',
+    'vote': '𝗩𝗼𝘁𝗶𝗻𝗴',
+    'absen': '𝗔𝗯𝘀𝗲𝗻',
+    'quran': '𝗔𝗹 𝗤𝘂𝗿\'𝗮𝗻',
+    'audio': '𝗔𝘂𝗱𝗶𝗼',
+    'jadibot': '𝗝𝗮𝗱𝗶 𝗕𝗼𝘁',
+    'info': '𝗜𝗻𝗳𝗼',
+    'dewasa': '𝗗𝗲𝘄𝗮𝘀𝗮',
+    '': '𝗧𝗮𝗻𝗽𝗮 𝗞𝗮𝘁𝗲𝗴𝗼𝗿𝗶',
   }
   if (teks == 'game') tags = {
-    'game': 'Game'
+    'game': '𝗚𝗮𝗺𝗲'
   }
   if (teks == 'rpg') tags = {
-    'rpg': 'Rpg'
+    'rpg': '𝗥𝗽𝗴'
   }
   if (teks == 'jadian') tags = {
-    'jadian': 'Jadian'
+    'jadian': '𝗝𝗮𝗱𝗶𝗮𝗻'
   }
   if (teks == 'xp') tags = {
-    'xp': 'Exp & Limit'
+    'xp': '𝗘𝘅𝗽 & 𝗟𝗶𝗺𝗶𝘁'
   }
   if (teks == 'stiker') tags = {
-    'sticker': 'Stiker'
+    'sticker': '𝗦𝘁𝗶𝗸𝗲𝗿'
   }
   if (teks == 'kerangajaib') tags = {
-    'kerang': 'Kerang Ajaib'
-  }
-  if (teks == 'photo') tags = {
-    'ephoto': 'Ephoto',
-    'photooxy': 'Photooxy'
+    'kerang': '𝗞𝗲𝗿𝗮𝗻𝗴 𝗔𝗷𝗮𝗶𝗯'
   }
   if (teks == 'quotes') tags = {
-    'quotes': 'Quotes'
+    'quotes': '𝗤𝘂𝗼𝘁𝗲𝘀'
+  }
+  if (teks == 'photo') tags = {
+    'ph': '𝗣𝗵𝗼𝘁𝗼𝗼𝘅𝘆',
+    'ep': '𝗘𝗽𝗵𝗼𝘁𝗼',
+  }
+  if (teks == 'editor') tags = {
+    'editor': '𝗘𝗱𝗶𝘁𝗼𝗿'
+  }
+  if (teks == 'maker') tags = {
+    'maker': '𝗠𝗮𝗸𝗲𝗿'
+  }
+  if (teks == 'textprome') tags = {
+    'te': '𝗧𝗲𝘅𝘁 𝗣𝗿𝗼 𝗠𝗲'
   }
   if (teks == 'admin') tags = {
-    'admin': `Admin ${global.opts['restrict'] ? '' : '(Dinonaktifkan)'}`
+    'admin': `𝗔𝗱𝗺𝗶𝗻 ${global.opts['restrict'] ? '' : '(Dinonaktifkan)'}`
   }
   if (teks == 'grup') tags = {
-    'group': 'Grup'
+    'group': '𝗚𝗿𝘂𝗽'
   }
   if (teks == 'premium') tags = {
-    'premium': 'Premium'
+    'premium': '𝗣𝗿𝗲𝗺𝗶𝘂𝗺'
   }
   if (teks == 'internet') tags = {
-    'internet': 'Internet'
+    'internet': '𝗜𝗻𝘁𝗲𝗿𝗻𝗲𝘁'
   }
   if (teks == 'anonymous') tags = {
-    'anonymous': 'Anonymous Chat'
+    'anonymous': '𝗔𝗻𝗼𝗻𝘆𝗺𝗼𝘂𝘀 𝗖𝗵𝗮𝘁'
   }
   if (teks == 'nulis') tags = {
-    'nulis': 'MagerNulis & Logo'
+    'nulis': '𝗠𝗮𝗴𝗲𝗿 𝗡𝘂𝗹𝗶𝘀 & 𝗟𝗼𝗴𝗼'
   }
   if (teks == 'downloader') tags = {
-    'downloader': 'Downloader'
+    'downloader': '𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱𝗲𝗿'
   }
   if (teks == 'tools') tags = {
-    'tools': 'Tools'
+    'tools': '𝗧𝗼𝗼𝗹𝘀'
   }
   if (teks == 'fun') tags = {
-    'fun': 'Fun'
+    'fun': '𝗙𝘂𝗻'
   }
   if (teks == 'database') tags = {
-    'database': 'Database'
+    'database': '𝗗𝗮𝘁𝗮𝗯𝗮𝘀𝗲'
   }
   if (teks == 'vote') tags = {
-    'vote': 'Voting',
-    'absen': 'Absen'
+    'vote': '𝗩𝗼𝘁𝗶𝗻𝗴',
+    'absen': '𝗔𝗯𝘀𝗲𝗻'
   }
   if (teks == 'quran') tags = {
-    'quran': 'Al Qur\'an'
+    'quran': '𝗔𝗹 𝗤𝘂𝗿\'𝗮𝗻'
   }
   if (teks == 'audio') tags = {
-    'audio': 'Pengubah Suara'
+    'audio': '𝗔𝘂𝗱𝗶𝗼'
   }
   if (teks == 'jadibot') tags = {
-    'jadibot': 'Jadi Bot'
+    'jadibot': '𝗝𝗮𝗱𝗶 𝗕𝗼𝘁'
   }
   if (teks == 'info') tags = {
-    'info': 'Info'
+    'info': '𝗜𝗻𝗳𝗼'
+  }
+  if (teks == 'dewasa') tags = {
+    'dewasa': '𝗗𝗲𝘄𝗮𝘀𝗮'
   }
   if (teks == 'tanpakategori') tags = {
-    '': 'Tanpa Kategori'
+    '': '𝗧𝗮𝗻𝗽𝗮 𝗞𝗮𝘁𝗲𝗴𝗼𝗿𝗶'
   }
   if (teks == 'owner') tags = {
-    'owner': 'Owner',
-    'host': 'Host',
-    'advanced': 'Advanced'
+    'owner': '𝗢𝘄𝗻𝗲𝗿',
+    'host': '𝗛𝗼𝘀𝘁',
+    'advanced': '𝗔𝗱𝘃𝗲𝗻𝗰𝗲𝗱'
   }
 
 
@@ -199,11 +216,15 @@ let totaljadibot = [...new Set([...global.conns.filter(conn => conn.user && conn
       }
     })
     if (teks == '404') {
-    throw ` *${ucapan()}, ${conn.getName(m.sender)}!*
-┌〔 DAFTAR MENU 〕─•
-┏━━〔 Status 〕━⬣
-┃❏ Aktif selama ${uptime}
-┃❏ Baterai ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}
+    throw` *${ucapan()}, ${conn.getName(m.sender)} !*
+${readMore}
+*┌〔 𝗗𝗔𝗙𝗧𝗔𝗥 𝗠𝗘𝗡𝗨 〕─•*
+*├❏ Aktif selama ${uptime}*
+*├❏ ${Object.keys(global.db.data.users).length} Pengguna*
+*├❏ ${totaljadibot.length} Jadibot*
+*├❏ ${conn.blocklist.length} Terblock*
+*├❏ ${Object.entries(global.db.data.users).filter(user => user[1].banned).length} Pengguna Terbanned*
+*├❏ ${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length} Chat Terbanned*
 ├❏ ${_p + command} all
 ├❏ ${_p + command} game
 ├❏ ${_p + command} rpg 
@@ -233,6 +254,7 @@ let totaljadibot = [...new Set([...global.conns.filter(conn => conn.user && conn
 └────•
 `.trim()
 }
+
     let groups = {}
     for (let tag in tags) {
       groups[tag] = []
@@ -281,29 +303,18 @@ let totaljadibot = [...new Set([...global.conns.filter(conn => conn.user && conn
       level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
       readmore: readMore
     }
-    text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    await conn.send3ButtonLoc(m.chat, await (await fetch(fla + teks)).buffer(), text.trim(), wm, 'Pemilik Bot', `${_p}owner`, 'Donasi', `${_p}donasi`, `Rules`, `${_p}rules`, m)
+    
+    text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length)
+    await conn.send2ButtonLoc(m.chat, await (await fetch(fla + text)).buffer(), text.trim(), wate
   } catch (e) {
-    //conn.reply(m.chat, 'Maaf, menu sedang error', m)
+  //conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
   }
 }
 handler.help = ['menu', 'help', '?']
 handler.tags = ['main']
 handler.command = /^(m|menu|help|\?)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
 handler.register = true
-
-handler.admin = false
-handler.botAdmin = false
-
-handler.fail = null
-handler.exp = 3
-
 module.exports = handler
 
 const more = String.fromCharCode(8206)
@@ -317,18 +328,21 @@ function clockString(ms) {
 }
 function ucapan() {
   const time = moment.tz('Asia/Jakarta').format('HH')
-  res = "Selamat dinihari"
+  res = "𝗦𝗲𝗹𝗮𝗺𝗮𝘁 𝗗𝗶𝗻𝗶 𝗛𝗮𝗿𝗶"
   if (time >= 4) {
-    res = "Selamat pagi"
+    res = "𝗦𝗲𝗹𝗮𝗺𝗮𝘁 𝗣𝗮𝗴𝗶"
   }
   if (time > 10) {
-    res = "Selamat siang"
+    res = "𝗦𝗲𝗹𝗮𝗺𝗮𝘁 𝗦𝗶𝗮𝗻𝗴"
   }
   if (time >= 15) {
-    res = "Selamat sore"
+    res = "𝗦𝗲𝗹𝗮𝗺𝗮𝘁 𝗦𝗼𝗿𝗲"
   }
   if (time >= 18) {
-    res = "Selamat malam"
+    res = "𝗦𝗲𝗹𝗮𝗺𝗮𝘁 𝗠𝗮𝗹𝗮𝗺"
   }
   return res
+}
+function pickRandom(list) {
+  return list[Math.floor(list.length * Math.random())]
 }

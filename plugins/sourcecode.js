@@ -1,15 +1,12 @@
 let fetch = require('node-fetch')
-let package = require('../package.json')
-let handler = async (m, { conn }) => await conn.sendButtonLoc(m.chat, await (await fetch(fla + 'source code')).buffer(), `
-Sc Bot
+let handler = async (m, { conn }) => conn.sendButtonLoc(m.chat, await (await fetch(fla + 'Source code')).buffer(), `
+*────────「 SCRIPT 」 ────────*
+Script Ori: https://github.com/Kangsad01/Stikerinbotnew
 
-Bot ini menggunakan sc : ${(package.homepage ? package.homepage.url || package.homepage : '[unknown github url]')}
-Jangan lupa kasih star 
-`.trim(), 'Scrip original by Nurutomo, M imam adi, Ariffb and BochilGaming', 'Pemilik bot', '.owner', m)
-
-handler.help = ['sc', 'sourcecode', 'src']
+Script Recode By Pilar: https://github.com/PilarV2/Stikerinbotnew
+`.trim(), '© ZeusBotz', 'Thanks', '.tqto')
+handler.help = ['sourcecode']
 handler.tags = ['info']
+handler.command = /^(sourcecode|sc|scbot|script|github)$/i
 
-handler.command = /^(sc|sourcecode|src)$/i
-  
 module.exports = handler
