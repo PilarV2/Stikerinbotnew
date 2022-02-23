@@ -1,12 +1,12 @@
 const { MessageType } = require('@adiwajshing/baileys')
 const PhoneNumber = require('awesome-phonenumber')
 async function handler(m) {
-  let name = 'ᴛʜᴇ.ꜱᴀᴅ.ʙᴏʏ01' //ubah jadi namamu
+  let name = 'PilarTod' //ubah jadi namamu
   number = owner[0].replace(/[^0-9]/g, '')
   let njid = number + '@s.whatsapp.net'
   let onW = await this.isOnWhatsApp(njid) || { isBusiness: false }
 
-  let name2 = 'Bochil Gaming' //ubah jadi namamu
+  let name2 = 'ZeusBotz' //ubah jadi namamu
   number2 = owner[1].replace(/[^0-9]/g, '')
   let njid2 = number2 + '@s.whatsapp.net'
   let onW2 = await this.isOnWhatsApp(njid2) || { isBusiness: false }
@@ -140,7 +140,7 @@ END:VCARD
 `.trim()
     }]
   }, MessageType.contactsArray, { quoted: m })
-  conn.send2Button(m.chat, `Mau tanya apa ke owner ku ?\nsc bot ? tekan button bawah ini jika tidak ada button ketik *.sc*`, 'Tuh owner Ku Jangan Galak² Ya >_<, Nanti Ku Banned Nanges', 'Youtube owner', '.ytowner', 'Source code', '.sc', m)
+  conn.send2Button(m.chat, `Mau tanya apa ke owner ku ?\nsc bot ? tekan button bawah ini jika tidak ada button ketik *.sc*`, 'Tuh owner Ku Jangan Galak² Ya >_<, Nanti Ku Banned Nanges', 'Menu', '.menu', 'Source code', '.sc', m)
   }
 handler.help = ['owner', 'creator']
 handler.tags = ['info']
