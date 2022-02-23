@@ -1,5 +1,5 @@
 {
-  "name": "PilarBocilYaha",
+  "name": "ZeusBotz",
   "version": "3.17.19",
   "description": "WhatsApp Bot Ringan",
   "main": "index.js",
@@ -19,7 +19,7 @@
   "keywords": [
     "whatsapp-bot"
   ],
-  "author": "Ariffb",
+  "author": "Recode By Pilar",
   "bugs": {
     "url": "https://github.com/Kangsad01/Stikerinbotnew/issues"
   },
