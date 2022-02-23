@@ -1,9 +1,7 @@
-//thanskto nurutomo, ariffb, bochilGaming, adi official dll
-//jan di ubah 
-//recode by : The.sad.boy01
-
 let util = require('util')
 let fetch = require('node-fetch')
+let fs = require('fs')
+let chalk = require('chalk')
 let simple = require('./lib/simple')
 const uploadImage = require('./lib/uploadImage')
 let { MessageType } = require('@adiwajshing/baileys')
@@ -32,12 +30,18 @@ module.exports = {
         let user = global.db.data.users[m.sender]
         if (typeof user !== 'object') global.db.data.users[m.sender] = {}
         if (user) {
-            if (!isNumber(user.healt)) user.healt = 0
-            if (!isNumber(user.stamina)) user.stamina = 0
-            if (!isNumber(user.money)) user.money = 0
+            if (!isNumber(user.healt)) user.healt = 100
+            if (!isNumber(user.stamina)) user.stamina = 100
+            if (!isNumber(user.money)) user.money = 1000
             
             if (!isNumber(user.trofi)) user.trofi= 0
             if (!user.rtrofi) user.rtrofi = 'Perunggu'
+            if (!('kingdomName' in user)) user.kingdomName = ''
+            if (!('namk' in user)) user.namk = ''
+            if (!isNumber(user.lvl)) user.lvl= 0
+            if (!isNumber(user.population)) user.population= 0
+            if (!isNumber(user.aliance)) user.aliance= 0
+            if (!isNumber(user.koin)) user.koin= 0
             if (!isNumber(user.rumahsakit)) user.rumahsakit= 0
             if (!isNumber(user.fortress)) user.fortress = 0
             if (!isNumber(user.troopcamp)) user.troopcamp = 0
@@ -47,6 +51,7 @@ module.exports = {
             
             if (!isNumber(user.diamond)) user.diamond = 0
             if (!isNumber(user.iron)) user.iron = 0
+            if (!isNumber(user.emas)) user.emas = 0
 
             if (!isNumber(user.common)) user.common = 0
             if (!isNumber(user.uncommon)) user.uncommon = 0
@@ -60,6 +65,15 @@ module.exports = {
             if (!isNumber(user.sampah)) user.sampah = 0
             if (!isNumber(user.armor)) user.armor = 0
             if (!isNumber(user.pancing)) user.pancing = 0
+            if (!isNumber(user.pasir)) user.pasir = 0
+            if (!isNumber(user.gold)) user.gold = 0
+            if (!isNumber(user.stone)) user.stone = 0
+            if (!isNumber(user.emerald)) user.emerald = 0
+            if (!isNumber(user.iron)) user.iron = 0
+                                                                      
+            if (!isNumber(user.ojek)) user.ojekk = 0
+            if (!isNumber(user.bensin)) user.bensin = 0
+            if (!isNumber(user.as)) user.as = 0
             
             if (!isNumber(user.kucing)) user.kucing = 0
             if (!isNumber(user.kucinglastclaim)) user.kucinglastclaim = 0
@@ -150,10 +164,10 @@ module.exports = {
             if (!isNumber(user.lastadventure)) user.lastadventure = 0
             if (!isNumber(user.lastfishing)) user.lastfishing = 0
             if (!isNumber(user.lastdungeon)) user.lastdungeon = 0
-            
+            if (!isNumber(user.lastspam)) user.lastspam =0
             if (!isNumber(user.lastsda)) user.lastsda = 0
             if (!isNumber(user.lastsda)) user.lastwar = 0
-            
+            if (!isNumber(user.lastnguli)) user.nguli = 0
             if (!isNumber(user.lastduel)) user.lastduel = 0
             if (!isNumber(user.lastmining)) user.lastmining = 0
             if (!isNumber(user.lasthunt)) user.lasthunt = 0
@@ -178,7 +192,7 @@ module.exports = {
           if (!isNumber(user.level)) user.level = 0
           if (!isNumber(user.call)) user.call = 0
           if (!user.role) user.role = 'Bronze'
-          if (!('autolevelup' in user)) user.autolevelup = false
+          if (!('autolevelup' in user)) user.autolevelup = true
           if (!isNumber(user.pc)) user.pc = 0
           if (!isNumber(user.warning)) user.warning = 0
           if (!('pasangan' in user)) user.pasangan = ''
@@ -188,13 +202,20 @@ module.exports = {
             trofi: 0,
             rtrofi: 'perunggu',
             rumahsakit: 0,
+            kingdomName: '',
+            namk: '',
+            lvl: 0,
+            population: 0,
+            aliance: 0,
+            koin: 0,
             troopcamp: 0,
             fortress: 0,
             makanan: 0,
             shield: false,
-            money: 0,
+            money: 1000,
             diamond: 0,
             iron: 0,
+            emas: 0,
             common: 0,
             uncommon: 0,
             mythic: 0,
@@ -204,6 +225,15 @@ module.exports = {
             psenjata: 0,
             potion: 0,
             pancing: 0,
+            pasir: 0,
+            gold: 0,
+            stone: 0,
+            emerald: 0,
+            iron: 0,
+                              
+            ojekk: 0,
+            bensin: 0,
+            as: 0,
             sampah: 0,
             armor: 0,
             kucing: 0,
@@ -283,6 +313,10 @@ module.exports = {
             lastadventure: 0,
             lastfishing: 0,
             lastdungeon: 0,
+            lastspam: 0,
+            lastsda: 0,
+            lastwar: 0,
+            lastguli: 0,
             lastduel: 0,
             lastmining: 0,
             lasthunt: 0,
@@ -304,7 +338,7 @@ module.exports = {
           level: 0,
           call: 0,
           role: 'Bronze',
-          autolevelup: false,
+          autolevelup: true,
           pc: 0,
           warning: 0,
           pasangan: '',
@@ -320,14 +354,14 @@ module.exports = {
           if (!('sBye' in chat)) chat.sBye = ''
           if (!('sPromote' in chat)) chat.sPromote = ''
           if (!('sDemote' in chat)) chat.sDemote = ''
+          if (!('antiBadword' in chat)) chat.antiBadword = false
           if (!('descUpdate' in chat)) chat.descUpdate = true
-          if (!('stiker' in chat)) chat.stiker = false
-          if (!('clear' in chat)) chat.clear = false
-          if (!isNumber(chat.clearTime)) chat.clearTime = (new Date() * 1) + 3600000 * 1
           if (!('delete' in chat)) chat.delete = true
           if (!('antiLink' in chat)) chat.antiLink = false
+          if (!('download' in chat)) chat.download = true
           if (!isNumber(chat.expired)) chat.expired = 0
-          if (!('antiBadword' in chat)) chat.antiBadword = false
+          if (!('getmsg' in chat)) chat.getmsg = false
+          if (!('stiker' in chat)) chat.stiker = false
           if (!('viewonce' in chat)) chat.viewonce = true
         } else global.db.data.chats[m.chat] = {
           isBanned: false,
@@ -337,17 +371,16 @@ module.exports = {
           sBye: '',
           sPromote: '',
           sDemote: '',
+          antiBadword: false,
           descUpdate: true,
-          stiker: false,
-          clear: false,
-          clearTime: (new Date() * 1) + 3600000 * 1,
           delete: true,
           antiLink: false,
+          download: true,
           expired: 0,
-          antiBadword: false,
+          getmsg: false,
+          stiker: false,
           viewonce: true,
         }
-
         let settings = global.db.data.settings[this.user.jid]
         if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
         if (settings) {
@@ -355,22 +388,28 @@ module.exports = {
           if (!'anticall' in settings) settings.anticall = true
           if (!'antispam' in settings) settings.antispam = true
           if (!'antitroli' in settings) settings.antitroli = true
+          if (!'autoupdatestatus' in settings) settings.autoupdatestatus = false
           if (!'backup' in settings) settings.backup = false
-          if (!isNumber(settings.backupDB)) settings.backupDB = 0
-          if (!'groupOnly' in settings) settings.groupOnly = false
-          if (!'jadibot' in settings) settings.groupOnly = true
+          if (!'buggc' in settings) settings.buggc = true
+          if (!isNumber(settings.backupTime)) settings.backupTime = 0
+          if (!'group' in settings) settings.group = false
+          if (!'jadibot' in settings) settings.jadibot = false
           if (!'nsfw' in settings) settings.nsfw = true
+          if (!'restrict' in settings) settings.restrict = false
           if (!isNumber(settings.status)) settings.status = 0
         } else global.db.data.settings[this.user.jid] = {
           anon: true,
           anticall: true,
           antispam: true,
           antitroli: true,
+          autoupdatestatus: false,
           backup: false,
-          backupDB: 0,
-          groupOnly: false,
-          jadibot: true,
+          buggc: true,
+          backupTime: 0,
+          group: false,
+          jadibot: false,
           nsfw: true,
+          restrict: false,
           status: 0,
         }
       } catch (e) {
@@ -524,10 +563,10 @@ module.exports = {
           if (xp > 200) m.reply('Ngecit -_-') // Hehehe
           else m.exp += xp
           if (!isPrems && plugin.limit && global.db.data.users[m.sender].limit < plugin.limit * 1) {
-            this.reply(m.chat, `Limit kamu habis, silahkan beli melalui *${usedPrefix}buy*`, m)
+            await conn.send2Button(m.chat, `Limit kamu habis, silahkan beli melalui *${usedPrefix}buy* atau klik tombol dibawah`, wm, '𝗕𝗲𝗹𝗶', `${usedPrefix}buy`, '𝗕𝗲𝗹𝗶 𝗦𝗲𝗺𝘂𝗮', `${usedPrefix}buyall`, m)
             continue // Limit habis
           }
-          if (plugin.level > _user.level) {
+          if (!isPrems && plugin.level && global.db.data.usets[m.sender].level < plugin.level * 1) {
             this.reply(m.chat, `diperlukan level ${plugin.level} untuk menggunakan perintah ini. Level kamu ${_user.level}`, m)
             continue // Jika levelnya belum tercapai
           }
@@ -574,7 +613,7 @@ module.exports = {
                 console.error(e)
               }
             }
-            if (m.limit) m.reply(+ m.limit + ' Limit terpakai') // Jadikan sebagai komentar jika kamu risih dengan pesan ini
+            if (m.limit) m.reply(+ m.limit + ' 𝗟𝗶𝗺𝗶𝘁 𝗧𝗲𝗿𝗽𝗮𝗸𝗮𝗶') // Jadikan sebagai komentar jika kamu risih dengan pesan ini
           }
           break
         }
@@ -629,22 +668,45 @@ module.exports = {
         if (chat.welcome) {
           let groupMetadata = await this.groupMetadata(jid)
           for (let user of participants) {
-            // let pp = './src/avatar_contact.png'
+             let pp = './src/avatar_contact.png'
             try {
-              pp = await uploadImage(await (await fetch(await this.getProfilePicture(user))).buffer())
+              pp = await this.getProfilePicture(user)
             } catch (e) {
             } finally {
               text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Selamat datang, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc ? String.fromCharCode(8206).repeat(4001) + groupMetadata.desc : '') :
                 (chat.sBye || this.bye || conn.bye || 'Sampai jumpa, @user!')).replace(/@user/g, '@' + user.split`@`[0])
-              let wel = await (await fetch(fla + `WELCOME`)).buffer()
+              let img = await (await fetch('https://telegra.ph/file/f96eee5c2c75bd32c1f58.png')).buffer()
 
-              let lea = await (await fetch(fla + `GOOD BYE`)).buffer()
+              let wel = fs.readFileSync('./src/images (2).jpeg')
 
-              conn.sendButtonLoc(jid, action === 'add' ? wel : lea, text, global.footer, 'LIST MENU', '#menu', false, {
+              let lea = fs.readFileSync('./src/images (4).jpeg')
+             
+               /*conn.sendButtonImg(jid, pp, text, wm, 'LIST MENU', '#menu', false, {
                 contextInfo: {
                   mentionedJid: [user]
                 }
-              })
+              })*/
+
+await conn.sendMessage(jid, { "contentText": text, "footerText": wm,
+"buttons": [
+{buttonId: '.menu', buttonText: {displayText: 'Menu'}, type: 1},
+{buttonId: '.owner', buttonText: {displayText: 'Owner'}, type: 1},
+{buttonId: '.rules', buttonText: {displayText: 'Rules Bot'}, type: 1}
+],
+"headerType": "DOCUMENT", "documentMessage": {
+            "url": "https://mmg.whatsapp.net/d/f/AsO5KpESy9E0WI72xEVp65rx505bQxvuIma79L8Ue076.enc",
+            "mimetype": "application/pdf",
+            "title": "ness.pdf",
+            "fileSha256": "8Xfe3NQDhjwVjR54tkkShLDGrIFKR9QT5EsthPyxDCI=",
+            "fileLength": "99999999999999",
+            "pageCount": 100,
+            "mediaKey": "XWv4hcnpGY51qEVSO9+e+q6LYqPR3DbtT4iqS9yKhkI=",
+            "fileName": wm,
+            "fileEncSha256": "NI9ykWUcXKquea4BmH7GgzhMb3pAeqqwE+MTFbH/Wk8=",
+            "directPath": "/v/t62.7118-24/35150115_287008086621545_8250021012380583765_n.enc?ccb=11-4&oh=6f0f730e5224c054969c276a6276a920&oe=61A21F46",
+            "mediaKeyTimestamp": "1634472176",
+            "jpegThumbnail": action === 'add' ? wel : lea,
+  }}, 'buttonsMessage', { quoted: false, contextInfo: { mentionedJid: [user], forwardingScore: 999, isForwarded: true, externalAdReply: { title: wm, body: 'Zeus Botz V3', description: ' Recode By Pilar', mediaType: 2, thumbnail: img, mediaUrl: `https://youtu.be/Hp8Kw4--OyQ`}}})
             }
           }
         }
@@ -654,7 +716,7 @@ module.exports = {
       case 'demote':
         if (!text) text = (chat.sDemote || this.sdemote || conn.sdemote || '@user sekarang bukan Admin')
         text = text.replace('@user', '@' + participants[0].split`@`[0])
-        if (chat.detect) this.sendMessage(jid, text, MessageType.extendedText, {
+        if (chat.detect) this.send2ButtonLoc(jid, img, text, wm, '𝗠𝗲𝗻𝘂', '#menu', '𝗣𝗲𝗺𝗶𝗹𝗶𝗸 𝗕𝗼𝘁', '#owner', null, {
           contextInfo: {
             mentionedJid: this.parseMention(text)
           }
@@ -669,7 +731,7 @@ module.exports = {
 Terdeteksi @${m.participant.split`@`[0]} telah menghapus pesan
 
 ketik *.on delete* untuk mematikan pesan ini
-`.trim(), wm, 'Matikan Antidelete', ',on delete', m.message, {
+`.trim(), wm, 'Matikan Antidelete', '.on delete', m.message, {
       contextInfo: {
         mentionedJid: [m.participant]
       }
@@ -705,29 +767,50 @@ ketik *.on delete* untuk mematikan pesan ini
 
     ketik *.off desc* untuk mematikan pesan ini
         `.trim()
-    this.sendButton(jid, caption, wm, 'Matikan Deskripsi', ',off desc', { contextInfo: { mentionedJid: this.parseMention(caption) } })
+    this.sendButton(jid, caption, wm, 'Matikan Deskripsi', '.off desc', { contextInfo: { mentionedJid: this.parseMention(caption) } })
 
   }
 }
-
 global.dfail = (type, m, conn) => {
   let msg = {
-    rowner: 'Perintah ini hanya dapat digunakan oleh _*Pemilik Bot*_',
-    owner: 'Perintah ini hanya dapat digunakan oleh _*Pemilik Bot*_',
-    mods: 'Perintah ini hanya dapat digunakan oleh _*Moderator*_',
-    premium: 'Perintah ini hanya untuk pengguna _*Premium*_',
-    group: 'Perintah ini hanya dapat digunakan di grup',
-    private: 'Perintah ini hanya dapat digunakan di Chat Pribadi',
-    admin: 'Perintah ini hanya untuk *Admin* grup',
-    botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini',
-    unreg: `Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar ${conn.getName(m.sender)}.17*`,
+    rowner: `*ACCESS DENIED*
+
+Perintah ini hanya untuk developer bot`,
+    owner: `*ACCESS DENIED*
+
+Perintah ini hanya untuk owner bot`,
+    mods: `*ACCESS DENIED*
+
+Perintah ini hanya untuk moderator bot`,
+    premium: `*PREMIUM ONLY*
+
+Fitur ini hanya tersedia untuk user *Premium*`,
+    group: `*GROUP ONLY*
+
+Fitur ini hanya dapat digunakan didalam grup!!`,
+    private: `*PRIVATE CHAT ONLY*
+
+Fitur ini hanya dapat digunakan diprivate chat`,
+    admin: `*ACCESS DENIED*
+
+Fitur ini hanya tersedia untuk admin grup!!`,
+    botAdmin: `*ACCESS DENIED*
+
+Fitur ini tidak dapat bekerja dengan baik jika bot tidak menjadi admin`,
+    unreg: `*UNREGISTER*
+
+Hai @${m.sender.split`@`[0]}
+
+Silahkan daftar terlebih dahulu untuk menggunakan bot ini.
+pastikan data yang di isi valid, guna agar dapat berteman
+
+Contoh:
+#daftar namamu.umurmu
+#daftar manusia.18`,
     nsfw: 'NSFW tidak aktif'
   }[type]
-  if (msg) return m.reply(msg)
+  if (msg) return conn.send2Button(m.chat, msg, wm, 'Pemilik Bot', '.owner', 'Rules', '.rules', m)
 }
-
-let fs = require('fs')
-let chalk = require('chalk')
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
   fs.unwatchFile(file)
