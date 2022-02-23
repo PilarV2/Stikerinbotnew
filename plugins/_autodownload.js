@@ -14,7 +14,7 @@ handler.all = async function (m, { isPrems }) {
     let url = m.text.split(/\n| /i)[0]
 
     if (/^.*tiktok/i.test(m.text)) {
-        let res = await fetch(API('amel', '/tiktok', { url }, 'apikey'))
+        let res = await fetch(API('rey', '/tiktok', { url }, 'apikey'))
         if (!res.ok) throw eror
         let json = await res.json()
         // m.reply(util.format(json))
@@ -100,7 +100,7 @@ handler.all = async function (m, { isPrems }) {
 *Ukuran File Audio:* ${filesizeF}
 *Ukuran File Video:* ${yt2.filesizeF}
 *Server y2mate:* ${usedServer}
-`.trim(), 'JANGAN LUPA JUGA SUB YT OWNER DENGAN KETIK /ytowner', 'Audio', `.yta ${vid.url}`, 'Video', `.yt ${vid.url}`)
+`.trim(), 'ZeusBotz', 'Audio', `.yta ${vid.url}`, 'Video', `.yt ${vid.url}`)
     }
 
 }
